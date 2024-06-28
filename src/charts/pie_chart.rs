@@ -223,6 +223,12 @@ impl PieChart {
             let is_left = angle > 180.0;
             if is_left {
                 end.x -= label_offset;
+                if(values.len()-1 > index){
+                    if ((values[index+1] - values[index]) < 3.0)
+                    {
+                        end.y += label_offset/((index as f32));
+                    }
+                }
             } else {
                 end.x += label_offset;
             }
